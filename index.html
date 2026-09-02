@@ -4,83 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vocabulary Digitizer</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            max-width: 500px;
-            margin: 4rem auto;
-            padding: 0 1rem;
-        }
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        h2 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-        .input-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-        input {
-            flex: 1;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            outline: none;
-        }
-        input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: white;
-            background-color: #28a745;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-        }
-        th, td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f8f9fa;
-        }
-        .empty-state {
-            text-align: center;
-            color: #6c757d;
-            font-style: italic;
-            padding: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-
     <div class="container">
         <h2>Vocabulary Digitizer</h2>
-        
         <p style="font-size: 0.9rem; color: #666;">
             <strong>Tip:</strong> Press <code>Enter</code> on the first box to skip translation. Press <code>Tab</code> to jump to the translation box.
         </p>
@@ -104,80 +32,5 @@
             </tbody>
         </table>
     </div>
-
-    <script>
-        const wordInput = document.getElementById('wordInput');
-        const transInput = document.getElementById('transInput');
-        const tbody = document.getElementById('vocabTableBody');
-        const exportBtn = document.getElementById('exportBtn');
-
-        let vocabList = [];
-
-        function addWord() {
-            const word = wordInput.value.trim();
-            const translation = transInput.value.trim();
-
-            if (!word) return;
-
-            vocabList.push({ word, translation });
-            renderTable();
-
-            wordInput.value = '';
-            transInput.value = '';
-            wordInput.focus();
-        }
-
-        function renderTable() {
-            if (vocabList.length === 0) return;
-            
-            tbody.innerHTML = vocabList.map(v => 
-                `<tr>
-                    <td>${v.word}</td>
-                    <td>${v.translation || '<span style="color:#ccc;">-</span>'}</td>
-                </tr>`
-            ).join('');
-        }
-
-        wordInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                addWord();
-            }
-        });
-
-        transInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                addWord();
-            }
-        });
-
-        exportBtn.addEventListener('click', () => {
-            if (vocabList.length === 0) {
-                alert("You haven't added any words yet!");
-                return;
-            }
-
-            let csvContent = "\uFEFFWord,Translation\n";
-            
-            csvContent += vocabList.map(v => {
-                let w = `"${v.word.replace(/"/g, '""')}"`;
-                let t = `"${v.translation.replace(/"/g, '""')}"`;
-                return `${w},${t}`;
-            }).join("\n");
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            
-            link.setAttribute('href', url);
-            link.setAttribute('download', 'My_Vocabulary.csv');
-            link.style.display = 'none';
-            
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
-    </script>
 </body>
 </html>
