@@ -1,80 +1,347 @@
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
+}
+
+body.light-mode {
+    background-color: white; 
+    background-blend-mode: difference; /* This mathematically inverts the background image */
+    color: #0f172a;
+}
+
+body.light-mode .shape {
+    background: linear-gradient(45deg, #a0a2a4, #e0ded2);
+}
+
+body.light-mode .container,
+body.light-mode .table-container {
+    background: rgba(222, 213, 255, 0.08);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode h2,
+body.light-mode .tip-text,
+body.light-mode .empty-state {
+    color: #0f172a;
+    text-shadow: none;
+}
+
+body.light-mode code {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #0f172a;
+}
+
+body.light-mode input {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #0f172a;
+}
+body.light-mode input:focus {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+body.light-mode input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+body.light-mode button, 
+body.light-mode .btn {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05));
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #0f172a;
+    text-shadow: none;
+}
+body.light-mode button:hover, 
+body.light-mode .btn:hover {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.08));
+}
+
+body.light-mode th {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #0f172a;
+}
+body.light-mode th, 
+body.light-mode td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    max-width: 500px;
-    margin: 4rem auto;
-    padding: 0 1rem;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url("wp.jpg") !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f172a; 
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: rgba(222, 213, 255, 0.08);
+    border-bottom: 1px solid #fff;
+}
+
+a.btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4); /* Resets the dashed border from general 'a' tags */
+}
+
+body.light-mode a.btn {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode a {
+    color: #0f172a;
+    border-bottom-color: rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode a:hover {
+    color: rgba(0, 0, 0, 0.7);
+    border-bottom-color: #0f172a;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .container {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); 
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0px !important;
+
+    max-height: 800px;
 }
 
 h2 {
     margin-top: 0;
-    color: #2c3e50;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 0.5px;
+}
+
+.tip-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+code {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .input-group {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 1.5rem;
 }
 
 input {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
     outline: none;
+    transition: all 0.3s ease;
+
+    min-width: 0; 
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 1rem;
     font-weight: bold;
-    color: white;
-    background-color: #28a745;
-    border: none;
-    border-radius: 4px;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 button:hover {
-    background-color: #218838;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 th, td {
     text-align: left;
     padding: 12px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 th {
-    background-color: #f8f9fa;
+    background-color: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+}
+
+tr:last-child td {
+    border-bottom: none;
 }
 
 .empty-state {
     text-align: center;
-    color: #6c757d;
+    color: rgba(255, 255, 255, 0.7);
     font-style: italic;
-    padding: 1rem;
+    padding: 1.5rem;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(45deg, #a0a2a4, rgb(77, 80, 117));
+    top: 15%;
+    left: 25%;
+}
+
+.shape-2 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(45deg, #44487c, #7f8079);
+    bottom: 15%;
+    right: 25%;
+    animation-delay: -4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+}
+
+.container {
+    position: relative; 
+    z-index: 1;
+    
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(20px) saturate(180%); 
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    flex: 1;
+    display: inline-block;
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    box-sizing: border-box; /* ensures equal sizing */
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+}
+
+.table-container {
+    max-height: 350px;
+    overflow-y: auto;
+    margin-top: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }

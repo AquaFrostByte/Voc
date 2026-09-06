@@ -7,30 +7,47 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+
     <div class="container">
         <h2>Vocabulary Digitizer</h2>
-        <p style="font-size: 0.9rem; color: #666;">
-            <strong>Tip:</strong> Press <code>Enter</code> on the first box to skip translation. Press <code>Tab</code> to jump to the translation box.
+        <span><a href="r.html">resources</a></span>
+        <p class="tip-text">
+            <strong>Tip:</strong> Press <code>Enter</code> to save. Use <code>Tab</code> to jump boxes.
         </p>
 
         <div class="input-group">
-            <input type="text" id="wordInput" placeholder="Word (Press Enter or Tab)" autofocus>
-            <input type="text" id="transInput" placeholder="Translation (Press Enter)">
+            <input type="text" id="chapterInput" placeholder="Chapter" style="flex: 0.5;">
+            <input type="text" id="wordInput" placeholder="Word" autofocus>
+            <input type="text" id="transInput" placeholder="Translation">
         </div>
 
-        <button id="exportBtn">Download Excel File</button>
+        <div class="button-group">
+            <input type="file" id="importFile" accept=".csv" style="display: none;">
+            <label for="importFile" class="btn btn-secondary">Import CSV</label>
+            
+            <button id="exportBtn" class="btn">Download Excel File</button>
+            <button id="copySheetsBtn" class="btn">Copy for Sheets</button>
+            <button id="themeToggle" class="btn btn-secondary">Light Mode</button>
+        </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Word</th>
-                    <th>Translation</th>
-                </tr>
-            </thead>
-            <tbody id="vocabTableBody">
-                <tr><td colspan="2" class="empty-state">No words added yet. Start typing!</td></tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ch.</th>
+                        <th>Word</th>
+                        <th>Translation</th>
+                    </tr>
+                </thead>
+                <tbody id="vocabTableBody">
+                    <tr><td colspan="3" class="empty-state">No words added yet. Start typing or import a CSV!</td></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+    <script src="Voc.js"></script>
+    <script src="style.js"></script>
 </body>
 </html>
