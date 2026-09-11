@@ -27,3 +27,6 @@ Its there so u can digitize Vocabulary fastly and easily. :3
 ## Wallpaper
 
 <img width="4335" height="2990" alt="wallhaven-yqv2wx" src="https://github.com/user-attachments/assets/08fc149f-6e4b-4564-9c3e-99404ba44521" />
+
+### Hackatimerlink
+https://hackatime.hackclub.com/?project=Voc%2CTransfer
