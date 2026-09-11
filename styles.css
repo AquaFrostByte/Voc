@@ -6,7 +6,7 @@
 
 body.light-mode {
     background-color: white; 
-    background-blend-mode: difference; /* This mathematically inverts the background image */
+    background-blend-mode: difference;
     color: #0f172a;
 }
 
@@ -113,7 +113,7 @@ a.btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4); /* Resets the dashed border from general 'a' tags */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4); 
 }
 
 body.light-mode a.btn {
